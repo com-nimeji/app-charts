@@ -1,0 +1,9 @@
+gha-runner-scale-set:
+  githubConfigUrl: "https://github.com/com-nimeji/sim-devastation"
+  githubConfigSecret: gh-token-secret
+  containerMode:
+    type: "dind"
+  maxRunners: 4
+  controllerServiceAccount:
+    namespace: sim-devastation
+    name: sim-devastation-gha-rs-controller
