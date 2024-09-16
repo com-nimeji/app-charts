@@ -5,5 +5,5 @@ gha-runner-scale-set:
     type: "dind"
   maxRunners: 4
   controllerServiceAccount:
-    namespace: sim-devastation
-    name: sim-devastation-gha-rs-controller
+    namespace: gha-runner-scale-set-controller
+    name: gha-runner-scale-set-controller-gha-rs-controller
