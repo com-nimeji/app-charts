@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: n8n
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: n8n
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/target: homelab-tunnel.nimeji.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - n8n.nimeji.com
+      secretName: n8n-tls
+  rules:
+    - host: n8n.nimeji.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 80
