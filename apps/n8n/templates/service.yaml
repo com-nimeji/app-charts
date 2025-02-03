@@ -9,7 +9,7 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 5678
+      targetPort: 5432
       protocol: TCP
   selector:
     app: n8n
